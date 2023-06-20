@@ -1,14 +1,27 @@
 const  mongoose  = require('mongoose');
 
 const NoteSchema = mongoose.Schema({
-    title:{
+    Todo:{
         type : String,
         required: true
     },
-    description:{
+    InProgress:{
         type: String,
         required:true
     },
+    Done:{
+        type: String,
+        required:true
+    },
+    Starton:{
+        type: Date,
+        default:  Date.now(),
+        required: true
+    },
+    Duration:{
+        type: Number,
+        required:true
+    },   
     userId :{
         type: mongoose.Schema.Types.ObjectId,
         ref : 'User',
