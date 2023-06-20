@@ -7,7 +7,4 @@ noterouter.post('/', auth,createNote)
 noterouter.put('/:id', auth,updateNote)
 noterouter.delete('/:id', auth,deleteNote)
 noterouter.get('/', auth,getNotes)
-
-
-
 module.exports = noterouter

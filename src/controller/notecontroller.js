@@ -1,14 +1,16 @@
 const noteModel = require("../models/note");
 
 const createNote =async (req,res)=>{
-    const {Todo,InProgress,Done,Duration,Starton} = req.body;
+    const {Task,CategoryId,Todo,InProgress,Done,Duration,Starton} = req.body;
     const newNote = new noteModel({
+    Task : Task,
+    CategoryId: CategoryId,
     Todo : Todo,
     InProgress : InProgress,
     Done:Done,
     Starton:Date.now(),
     Duration:Duration,
-    userId : req.userId})
+    UserId : req.userId})
     try{
         await newNote.save()
         res.status(201).json(newNote)
@@ -19,15 +21,17 @@ const createNote =async (req,res)=>{
 }
 const updateNote = async(req,res)=>{
     const id = req.params.id;
-    const{Todo,InProgress,Done,Starton,Duration,Endon} = req.body;
+    const{Task,CategoryId,Todo,InProgress,Done,Starton,Duration} = req.body;
 
     const newNote={
+        Task:Task,
+        CategoryId: CategoryId,
         Todo : Todo,
         InProgress : InProgress,
         Done:Done,
         Starton:Starton,
         Duration:Duration,
-        userId : req.userId
+        UserId : req.userId
     }
     try{
         await noteModel.findByIdAndUpdate(id, newNote, {new:true});

@@ -1,7 +1,9 @@
 const express = require('express');
 const userrouter = require('./routes/userRoutes.js');
 const noterouter = require('./routes/noteRoutes.js');
-const categoryrouter = require('./routes/categoryRoutes.js');
+const categoryRouter = require('./routes/categoryRoutes.js');
+const countroute = require('./routes/countroute.js');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000
@@ -9,10 +11,9 @@ app.use(express.json())
 require('./db/conn.js');
 
 app.use('/users',userrouter)
-app.use('/note', noterouter)
-app.use('/category', categoryrouter)
-
-
+app.use('/task', noterouter)
+app.use("/category",categoryRouter);
+app.use('/api', countroute);
 app.get('/', (req, res)=>{
     res.send("hii hello");
 });

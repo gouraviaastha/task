@@ -1,6 +1,13 @@
-const  mongoose  = require('mongoose');
-
-const NoteSchema = mongoose.Schema({
+const  mongoose  = require('mongoose')
+const TaskSchema = mongoose.Schema({
+    Task:{
+        type : String,
+        required: true
+    },
+    CategoryId:{
+        type : String,
+        required: true
+    },
     Todo:{
         type : String,
         required: true
@@ -22,7 +29,7 @@ const NoteSchema = mongoose.Schema({
         type: Number,
         required:true
     },   
-    userId :{
+    UserId :{
         type: mongoose.Schema.Types.ObjectId,
         ref : 'User',
         required: true
@@ -30,4 +37,4 @@ const NoteSchema = mongoose.Schema({
 
 })
 
-module.exports=mongoose.model('Note', NoteSchema);
+module.exports=mongoose.model('Note', TaskSchema);
