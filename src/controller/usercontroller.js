@@ -38,7 +38,8 @@ const signin = async (req,res)=> {
         if (!matchPassword){
             return res.status(400).json({massage:"Invalid Password"})
         }
-        const tokan = await jwt.sign({email : existingUser.email, id : existingUser._id},SECRET_KEY);
+        const tokan = await jwt.sign({email : existingUser.email, id : existingUser._id},SECRET_KEY,
+            {expiresIn :"10d"});
         res.status(200).json({user:existingUser, tokan: tokan})
     }catch(error){
         console.log(error);

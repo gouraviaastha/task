@@ -6,5 +6,5 @@ commonroute.use(bodyParser.urlencoded({extended:true}));
 const auth = require("../middleware/auth");
 const countcontroller = require("../controller/countcontroller");
 commonroute.get("/count",auth, countcontroller.datacount);
-
+commonroute.get("/count/:id",auth, countcontroller.cat_count);
 module.exports = commonroute;

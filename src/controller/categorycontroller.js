@@ -12,12 +12,10 @@ const addcategory = async (req, res) => {
         else
             {
                 await NewCategory.save();
-                res.status(201).json({NewCategory});           
-
+                res.status(201).json({NewCategory});   
             }
-        }
-          catch (error) {
-        res.status(500).json({ message: "category note created" });
+        }catch (error) {
+        res.status(500).json({ message: "category not created" });
     }
 }
 const getcategory = async (req,res)=> {

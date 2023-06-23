@@ -19,4 +19,17 @@ const datacount = async (req,res)=> {
         res.status(400).send({success: failed, msg: error})
     }
 }
-module.exports =  {datacount}
+const cat_count =async(req,res)=>{
+    const id = req.params.id;
+    try{
+        const category_task = await task.find({CategoryId:id}).count();
+        const numberoftask = {
+            CategoryId : id,
+            NumberofTask: category_task,
+        }
+        res.status(400).send({success:true,data:numberoftask})
+    }catch(error){
+        res.status(400).send({success:false, msg:"Some thing went wrong to find category task"})
+    }
+}
+module.exports =  {datacount,cat_count}
